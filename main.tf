@@ -9,7 +9,7 @@ provider "google" {
 resource "google_compute_instance" "dev" {
   name         = "terraform-google-dev0"
   machine_type = "f1-micro" # 1 CPU and 614 MB memory
-  zone         = "us-east1-c"
+  # zone         = "us-east1-c"
 
   tags = ["terraform", "dev0"]
 
@@ -35,7 +35,7 @@ resource "google_compute_instance" "dev" {
 resource "google_compute_instance" "dev4" {
   name         = "terraform-google-dev4"
   machine_type = "f1-micro" # 1 CPU and 614 MB memory
-  zone         = "us-east1-c"
+  # zone         = "us-east1-c"
 
   tags = ["terraform", "dev4"]
 
@@ -64,7 +64,7 @@ resource "google_compute_instance" "dev4" {
 resource "google_compute_instance" "dev5" {
   name         = "terraform-google-dev5"
   machine_type = "f1-micro" # 1 CPU and 614 MB memory
-  zone         = "us-east1-c"
+  # zone         = "us-east1-c"
 
   tags = ["terraform", "dev5"]
 
