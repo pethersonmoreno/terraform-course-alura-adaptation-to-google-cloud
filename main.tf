@@ -54,6 +54,15 @@ resource "google_compute_network" "default" {
   timeouts {}
 }
 
+resource "google_storage_bucket" "dev4" {
+  name          = "pethersonmorenotesting-dev4"
+  location      = "US-EAST1"
+  storage_class = "STANDARD"
+  force_destroy = true # used to destroy bucket with its objects on terraform destroy
+  # bucket_policy_only       = false
+  # default_event_based_hold = false
+}
+
 output "ip" {
  value = google_compute_instance.dev.network_interface.0.access_config.0.nat_ip
 }
