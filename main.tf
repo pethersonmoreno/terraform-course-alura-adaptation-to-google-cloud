@@ -6,6 +6,15 @@ provider "google" {
   zone        = "us-east1-c"
 }
 
+provider "google" {
+  alias       = "us-central1"
+  version     = "3.29.0"
+  credentials = file("~/.terraform-configs/terraform-pet.json")
+  project     = "terraform-pet"
+  region      = "us-central1"
+  zone        = "us-central1-b"
+}
+
 resource "google_compute_instance" "dev" {
   name         = "terraform-google-dev0"
   machine_type = "f1-micro" # 1 CPU and 614 MB memory
@@ -81,6 +90,32 @@ resource "google_compute_instance" "dev5" {
   network_interface {
     network = "default"
     # network = google_compute_network.default.name
+    access_config {
+     // Include this section to give the VM an external ip address
+    }
+  }
+}
+
+resource "google_compute_instance" "dev6" {
+  provider = google.us-central1
+  name         = "terraform-google-dev6"
+  machine_type = "f1-micro" # 1 CPU and 614 MB memory
+
+  tags = ["terraform", "dev5"]
+
+  boot_disk {
+    initialize_params {
+      image = "ubuntu-minimal-1804-bionic-v20200703a"
+    }
+  }
+
+  metadata = {
+    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+  }
+
+  network_interface {
+    # network = "default"
+    network = google_compute_network.default-us-central1.name
     access_config {
      // Include this section to give the VM an external ip address
     }
