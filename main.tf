@@ -77,6 +77,8 @@ resource "google_compute_instance" "dev4" {
      // Include this section to give the VM an external ip address
     }
   }
+
+  depends_on = [google_storage_bucket.dev4]
 }
 
 
