@@ -71,8 +71,8 @@ resource "google_compute_instance" "dev4" {
   }
 
   network_interface {
-    # network = "default"
-    network = google_compute_network.default.name
+    network = "default"
+    # network = google_compute_network.default.name
     access_config {
      // Include this section to give the VM an external ip address
     }
@@ -98,8 +98,8 @@ resource "google_compute_instance" "dev5" {
   }
 
   network_interface {
-    # network = "default"
-    network = google_compute_network.default.name
+    network = "default"
+    # network = google_compute_network.default.name
     access_config {
      // Include this section to give the VM an external ip address
     }
