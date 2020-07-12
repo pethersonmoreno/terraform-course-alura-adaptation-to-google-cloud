@@ -104,7 +104,7 @@ resource "google_compute_instance" "dev6" {
   name         = "terraform-google-dev6"
   machine_type = "f1-micro" # 1 CPU and 614 MB memory
 
-  tags = ["terraform", "dev5"]
+  tags = ["terraform", "dev6"]
 
   boot_disk {
     initialize_params {
