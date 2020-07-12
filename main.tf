@@ -123,6 +123,7 @@ resource "google_compute_instance" "dev6" {
      // Include this section to give the VM an external ip address
     }
   }
+  depends_on = [google_sql_database.mysql-homologacao]
 }
 
 resource "google_storage_bucket" "dev4" {
@@ -134,6 +135,64 @@ resource "google_storage_bucket" "dev4" {
   # default_event_based_hold = false
 }
 
+resource "google_sql_database" "mysql-homologacao" {
+  provider = google.us-central1
+  name     = "mysql-homologacao"
+  instance = google_sql_database_instance.instance-mysql-homologacao.name
+  depends_on = [google_sql_database_instance.instance-mysql-homologacao]
+}
+
+resource "google_sql_database_instance" "instance-mysql-homologacao" {
+  provider = google.us-central1
+  name   = "instance-mysql-homologacao-${random_uuid.db-mysql.result}"
+  database_version  = "MYSQL_5_7"
+  settings {
+    tier = "db-f1-micro"
+    ip_configuration {
+      private_network = google_compute_network.default-us-central1.id
+      # dynamic "authorized_networks" {
+      #   for_each = [google_compute_instance.dev6]
+      #   iterator = apps
+
+      #   content {
+      #     name  = apps.value.name
+      #     value = apps.value.network_interface.0.access_config.0.nat_ip
+      #   }
+      # }
+    }
+  }
+
+  depends_on = [google_service_networking_connection.default-us-central1-private_vpc_connection]
+}
+resource "google_sql_user" "users" {
+  name     = "homologacao"
+  instance = google_sql_database_instance.instance-mysql-homologacao.name
+  host     = "%"
+  password = "homologacao"
+}
+
+resource "google_compute_global_address" "default-us-central1-private_ip_address" {
+  provider = google.us-central1
+
+  name          = "default-us-central1-private-ip-address"
+  purpose       = "VPC_PEERING"
+  address_type  = "INTERNAL"
+  prefix_length = 16
+  network       = google_compute_network.default-us-central1.id
+}
+
+resource "google_service_networking_connection" "default-us-central1-private_vpc_connection" {
+  provider = google.us-central1
+
+  network                 = google_compute_network.default-us-central1.id
+  service                 = "servicenetworking.googleapis.com"
+  reserved_peering_ranges = [google_compute_global_address.default-us-central1-private_ip_address.name]
+}
+
 output "ip" {
  value = google_compute_instance.dev.network_interface.0.access_config.0.nat_ip
+}
+
+output "ip-dev6" {
+ value = google_compute_instance.dev6.network_interface.0.access_config.0.nat_ip
 }
