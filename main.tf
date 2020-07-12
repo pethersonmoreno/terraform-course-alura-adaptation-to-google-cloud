@@ -27,7 +27,7 @@ resource "google_compute_instance" "dev" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-1804-bionic-v20200701"
+      image = var.google-images["us-east1"]
     }
   }
 
@@ -53,7 +53,7 @@ resource "google_compute_instance" "dev4" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-1804-bionic-v20200701"
+      image = var.google-images["us-east1"]
     }
   }
 
@@ -82,7 +82,7 @@ resource "google_compute_instance" "dev5" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-1804-bionic-v20200701"
+      image = var.google-images["us-east1"]
     }
   }
 
@@ -108,7 +108,7 @@ resource "google_compute_instance" "dev6" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-minimal-1804-bionic-v20200703a"
+      image = var.google-images["us-central1"]
     }
   }
 

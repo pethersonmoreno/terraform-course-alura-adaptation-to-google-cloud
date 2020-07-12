@@ -1,8 +1,8 @@
-resource "random_uuid" "db-mysql" { }
-# resource "random_id" "timestamp" {
-#   keepers = {
-#     datetime = formatdate("YYYYMMDDHHMM", timestamp())
-#   }
-
-#   byte_length = 12
-# }
+variable "google-images" {
+    type = map(string)
+    
+    default = {
+        "us-east1" = "ubuntu-1804-bionic-v20200701"
+        "us-central1" = "ubuntu-1804-bionic-v20200701"
+    }
+}
