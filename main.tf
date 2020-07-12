@@ -149,7 +149,17 @@ resource "google_sql_database_instance" "instance-mysql-homologacao" {
   settings {
     tier = "db-f1-micro"
     ip_configuration {
+      ipv4_enabled    = true
       private_network = google_compute_network.default-us-central1.id
+      dynamic "authorized_networks" {
+        for_each = ["187.57.0.19"]
+        iterator = item
+
+        content {
+          name  = "public access"
+          value = item.value
+        }
+      }
       # dynamic "authorized_networks" {
       #   for_each = [google_compute_instance.dev6]
       #   iterator = apps

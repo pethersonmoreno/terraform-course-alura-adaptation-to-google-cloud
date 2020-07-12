@@ -34,6 +34,20 @@ resource "google_compute_firewall" "default-us-central1" {
     ports    = ["22"]
   }
 }
+# resource "google_compute_firewall" "mysql-us-central1" {
+#   provider = google.us-central1
+#   name    = "mysql-public-access"
+#   network = google_compute_network.default-us-central1.name
+#   # network = "default"
+
+#   direction = "INGRESS"
+
+#   source_ranges = ["187.57.0.19/32"]
+#   allow {
+#     protocol = "tcp"
+#     ports    = ["3306"]
+#   }
+# }
 
 resource "google_compute_network" "default-us-central1" {
   provider = google.us-central1
