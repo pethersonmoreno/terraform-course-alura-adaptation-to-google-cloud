@@ -14,6 +14,9 @@ provider "google" {
   region      = "us-central1"
   zone        = "us-central1-b"
 }
+provider "random" {
+  version = "2.3"
+}
 
 resource "google_compute_instance" "dev" {
   name         = "terraform-google-dev0"
