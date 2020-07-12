@@ -5,7 +5,7 @@ resource "google_compute_firewall" "default" {
 
   direction = "INGRESS"
 
-  source_ranges = ["187.57.0.19/32"]
+  source_ranges = var.cdirs_acesso_remoto
   allow {
     protocol = "tcp"
     ports    = ["22"]
@@ -28,7 +28,7 @@ resource "google_compute_firewall" "default-us-central1" {
 
   direction = "INGRESS"
 
-  source_ranges = ["187.57.0.19/32"]
+  source_ranges = var.cdirs_acesso_remoto
   allow {
     protocol = "tcp"
     ports    = ["22"]
@@ -42,7 +42,7 @@ resource "google_compute_firewall" "default-us-central1" {
 
 #   direction = "INGRESS"
 
-#   source_ranges = ["187.57.0.19/32"]
+#   source_ranges = var.cdirs_acesso_remoto
 #   allow {
 #     protocol = "tcp"
 #     ports    = ["3306"]

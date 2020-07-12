@@ -152,7 +152,7 @@ resource "google_sql_database_instance" "instance-mysql-homologacao" {
       ipv4_enabled    = true
       private_network = google_compute_network.default-us-central1.id
       dynamic "authorized_networks" {
-        for_each = ["187.57.0.19"]
+        for_each = var.ips_acesso_remoto
         iterator = item
 
         content {
