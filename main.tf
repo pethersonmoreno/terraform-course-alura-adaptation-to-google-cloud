@@ -126,6 +126,33 @@ resource "google_compute_instance" "dev6" {
   depends_on = [google_sql_database.mysql-homologacao]
 }
 
+
+resource "google_compute_instance" "dev7" {
+  provider = google.us-central1
+  name         = "terraform-google-dev7"
+  machine_type = "f1-micro" # 1 CPU and 614 MB memory
+
+  tags = ["terraform", "dev7"]
+
+  boot_disk {
+    initialize_params {
+      image = var.google-images["us-central1"]
+    }
+  }
+
+  metadata = {
+    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+  }
+
+  network_interface {
+    # network = "default"
+    network = google_compute_network.default-us-central1.name
+    access_config {
+     // Include this section to give the VM an external ip address
+    }
+  }
+}
+
 resource "google_storage_bucket" "dev4" {
   name          = "pethersonmorenotesting-dev4"
   location      = "US-EAST1"
