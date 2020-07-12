@@ -1,7 +1,7 @@
 provider "google" {
   version     = "3.29.0"
-  credentials = file("~/.terraform-configs/terraform-pet.json")
-  project     = "terraform-pet"
+  credentials = file(var.google-credentials-file-path)
+  project     = var.google-project-name
   region      = "us-east1"
   zone        = "us-east1-c"
 }
@@ -9,8 +9,8 @@ provider "google" {
 provider "google" {
   alias       = "us-central1"
   version     = "3.29.0"
-  credentials = file("~/.terraform-configs/terraform-pet.json")
-  project     = "terraform-pet"
+  credentials = file(var.google-credentials-file-path)
+  project     = var.google-project-name
   region      = "us-central1"
   zone        = "us-central1-b"
 }
