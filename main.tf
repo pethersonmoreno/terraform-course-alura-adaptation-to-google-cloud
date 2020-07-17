@@ -229,11 +229,3 @@ resource "google_service_networking_connection" "default-us-central1-private_vpc
   service                 = "servicenetworking.googleapis.com"
   reserved_peering_ranges = [google_compute_global_address.default-us-central1-private_ip_address.name]
 }
-
-output "ip" {
- value = google_compute_instance.dev.network_interface.0.access_config.0.nat_ip
-}
-
-output "ip-dev6" {
- value = google_compute_instance.dev6.network_interface.0.access_config.0.nat_ip
-}
