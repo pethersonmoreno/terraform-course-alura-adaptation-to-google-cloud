@@ -44,6 +44,7 @@ resource "google_compute_instance" "dev" {
   }
 }
 
+/*
 resource "google_compute_instance" "dev4" {
   name         = "terraform-google-dev4"
   machine_type = "f1-micro" # 1 CPU and 614 MB memory
@@ -71,6 +72,7 @@ resource "google_compute_instance" "dev4" {
 
   depends_on = [google_storage_bucket.dev4]
 }
+*/
 
 
 resource "google_compute_instance" "dev5" {
@@ -153,6 +155,7 @@ resource "google_compute_instance" "dev7" {
   }
 }
 
+/*
 resource "google_storage_bucket" "dev4" {
   name          = "pethersonmorenotesting-dev4"
   location      = "US-EAST1"
@@ -161,6 +164,7 @@ resource "google_storage_bucket" "dev4" {
   # bucket_policy_only       = false
   # default_event_based_hold = false
 }
+*/
 
 resource "google_sql_database" "mysql-homologacao" {
   provider = google.us-central1
