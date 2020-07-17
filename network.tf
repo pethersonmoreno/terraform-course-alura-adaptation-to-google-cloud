@@ -22,7 +22,7 @@ resource "google_compute_network" "default" {
 
 resource "google_compute_firewall" "default-us-central1" {
   provider = google.us-central1
-  name    = "test-firewall"
+  name    = "test-firewall-us-central1"
   network = google_compute_network.default-us-central1.name
   # network = "default"
 
