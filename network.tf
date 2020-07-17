@@ -51,7 +51,7 @@ resource "google_compute_firewall" "default-us-central1" {
 
 resource "google_compute_network" "default-us-central1" {
   provider = google.us-central1
-  name  = "default-terraform-pet"
+  name  = "default-terraform-pet-us-central1"
   project = "terraform-pet"
   routing_mode  = "REGIONAL"
   description = "Default network for the project terraform-pet"
