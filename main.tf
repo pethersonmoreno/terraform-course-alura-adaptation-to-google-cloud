@@ -32,7 +32,7 @@ resource "google_compute_instance" "dev" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file(var.keypub-instance-file-path)}"
   }
 
   network_interface {
@@ -59,7 +59,7 @@ resource "google_compute_instance" "dev4" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file(var.keypub-instance-file-path)}"
   }
 
   network_interface {
@@ -89,7 +89,7 @@ resource "google_compute_instance" "dev5" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file(var.keypub-instance-file-path)}"
   }
 
   network_interface {
@@ -115,7 +115,7 @@ resource "google_compute_instance" "dev6" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file(var.keypub-instance-file-path)}"
   }
 
   network_interface {
@@ -143,7 +143,7 @@ resource "google_compute_instance" "dev7" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file(var.keypub-instance-file-path)}"
   }
 
   network_interface {

@@ -25,3 +25,8 @@ variable "google-project-name" {
     type = string
     default = "terraform-pet"
 }
+
+variable "keypub-instance-file-path" {
+    type = string
+    default = "~/.ssh/id_rsa.pub"
+}
