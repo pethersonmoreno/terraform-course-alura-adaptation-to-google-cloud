@@ -19,7 +19,7 @@ variable "ips_acesso_remoto" {
 
 variable "google-credentials-file-path" {
     type = string
-    default = "~/.terraform-configs/terraform-pet.json"
+    default = "./.terraform-configs/terraform-pet.json"
 }
 variable "google-project-name" {
     type = string
@@ -28,5 +28,5 @@ variable "google-project-name" {
 
 variable "keypub-instance-file-path" {
     type = string
-    default = "~/.ssh/id_rsa.pub"
+    default = "./.terraform-configs/terraform-key.pub"
 }

@@ -2,3 +2,4 @@
 # .tfstate files
 /*.tfstate
 /*.tfstate.*
+/.terraform-configs
