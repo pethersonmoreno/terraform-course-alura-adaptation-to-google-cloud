@@ -166,6 +166,15 @@ resource "google_storage_bucket" "dev4" {
 }
 */
 
+resource "google_storage_bucket" "homologacao" {
+  name          = "pethersonmorenotesting-homologacao"
+  location      = "US-EAST1"
+  storage_class = "STANDARD"
+  force_destroy = true # used to destroy bucket with its objects on terraform destroy
+  # bucket_policy_only       = false
+  # default_event_based_hold = false
+}
+
 resource "google_sql_database" "mysql-homologacao" {
   provider = google.us-central1
   name     = "mysql-homologacao"
